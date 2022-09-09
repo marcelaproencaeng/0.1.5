@@ -1,19 +1,29 @@
-//Faça uma função que irá receber três parâmetros. O primeiro será um numero que representa o valor de uma compra que está sendo feita no mercado / farmácia. O segundo parâmetro é um `boolean` que representa se a compra possui ou não convênio com o estabelecimento e o último parâmetro representa se a compra está sendo feita ou não com o cartão da loja. Se a pessoa que estiver fazendo a compra possuir o cartão da loja e possui convênio então o desconto será de 15%. Se o usuário possuir convenio ou estiver fazendo a compra pelo cartão da loja o desconto é de 10%. Caso o usuário não tenha nenhum desses benefícios não existe desconto para a compra.
+//Adapte o Exercício 0.1.2 para que o desconto seja aplicado para um valor de no máximo 100 reais independente do tipo de desconto. Além disso, adicione um quarto parâmetro que irá representar se essa é a primeira compra desse usuário no estabelecimento. Dê um desconto de 5% se for a primeira compra. 
 
-function compra(valorCompra, temConvenio, cartaoLoja) {
+function compra(valorCompra, temConvenio, cartaoLoja,primeiraCompra) {
   let valorFinal = 0;
+  const descontoMax=100;
 
   if (temConvenio && cartaoLoja) {
-    valorFinal = valorCompra - valorCompra * 0.15;
-    console.log('Tem desconto de 15%');
-    return valorFinal;
-  } else if (temConvenio || cartaoLoja) {
-    valorFinal = valorCompra - valorCompra * 0.1;
-    console.log('Tem desconto de 10%');
-    return valorFinal;
+    if((valorCompra*0.15>100)){
+      return valorCompra-100;
+    }else if(valorCompra*0.15<100){
+      return valorCompra -100;
+    }
+      
+  if (temConvenio || cartaoLoja) {
+    if((valorCompra* 0.1>100)){
+      return valorCompra-100;
+    }else if(valorCompra*0.10<100){
+      return valorCompra-100;
+    }
+    if()
+    
   } else {
     valorFinal = valorCompra;
-    console.log('Não tem desconto');
-    return valorFinal;
+    return valorCompra;
   }
 }
+console.log(compra(100, true, true));
+console.log(compra(100, false, true));
+console.log(compra(100, false, false));
